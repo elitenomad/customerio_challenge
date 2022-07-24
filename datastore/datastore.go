@@ -47,9 +47,7 @@ func (d Datastore) List(page, count int) ([]*serve.Customer, error) {
 }
 
 func (d Datastore) Create(id int, attributes map[string]string) (*serve.Customer, error) {
-	if _, exists := d.Customers[id]; exists {
-		return nil, errors.New("Already exists")
-	} else {
+	if _, exists := d.Customers[id]; !exists {
 		timestamp, err := strconv.Atoi(attributes["timestamp"])
 		if err != nil {
 			timestamp = 0

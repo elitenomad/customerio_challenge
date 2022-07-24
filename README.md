@@ -300,3 +300,4 @@ go run verify/main.go --verify-file=/path/to/verify/file
  - `List` method in `datastore/datastore.go` is in-efficient as everytime we loop through datastore map to generate an array of customers.
  - Chose the data structure of `map` over `slice` to remove the dependency of sequentials UserIds in the input file. (User Id could be of any value and the lookups will be efficient)
  - Error handling and bubbling can be improved. Currently the server errors from the API will be shown as `{message: Internal server error}`
+ - Tests are written only for the `datastore/datastore.go` as that's the core file where is responsible for driving the REST API. Enhancements could be writing tests for each file in the code base.
