@@ -97,6 +97,15 @@ func (d Datastore) Delete(id int) error {
 	return nil
 }
 
+func (d Datastore) DeleteAttribute(id int, name string) (*serve.Customer, error) {
+	if _, exists := d.Customers[id]; !exists {
+		return nil, errors.New("Not found")
+	}
+
+	delete(d.Customers[id].Attributes, name)
+	return d.Customers[id], nil
+}
+
 func (d Datastore) TotalCustomers() (int, error) {
 	if len(d.Customers) <= 0 {
 		return -1, errors.New("Empty")

@@ -1,6 +1,7 @@
 package serve
 
 import (
+	"log"
 	"net/http"
 	"strconv"
 
@@ -26,10 +27,12 @@ func (s server) Update(c echo.Context) error {
 			Attributes map[string]string `json:"attributes"`
 		} `json:"customer"`
 	}{}
+
 	if err := c.Bind(&request); err != nil {
 		return err
 	}
 
+	log.Println("PRAQNAV ", request.Customer)
 	customer, err = s.ds.Update(id, request.Customer.Attributes)
 	if err != nil {
 		return err

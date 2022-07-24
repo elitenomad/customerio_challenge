@@ -27,5 +27,6 @@ type Datastore interface {
 	Create(id int, attributes map[string]string) (*Customer, error)
 	Update(id int, attributes map[string]string) (*Customer, error)
 	Delete(id int) error
+	DeleteAttribute(id int, name string) (*Customer, error)
 	TotalCustomers() (int, error)
 }

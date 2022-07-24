@@ -34,8 +34,9 @@ func ListenAndServe(address string, datastore Datastore) error {
 	e.GET("/customers", s.List)
 	e.POST("/customers", s.Create)
 	e.GET("/customers/:id", s.Get)
-	e.PATCH("/customers/:id", s.Update)
+	e.PUT("/customers/:id", s.Update)
 	e.DELETE("/customers/:id", s.Delete)
+	e.DELETE("/customers/:id/attributes/:name", s.DeleteAttribute)
 
 	// Start server
 	go func() {
